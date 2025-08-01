@@ -294,7 +294,7 @@ class DiffAttention(torch.nn.Module):
         )
 
         attn_output = self.post_attn(attn1, attn2, bsz, q_seq_len)
-        attn_output = self.subln(attn_output)
+        attn_output = self.subln(attn_output.float())
         attn_output = attn_output * (1 - self.lambda_init)
         return attn_output
 

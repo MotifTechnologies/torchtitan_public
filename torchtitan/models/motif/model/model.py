@@ -254,7 +254,7 @@ class FeedForward(nn.Module):
         self.w3 = nn.Linear(dim, hidden_dim, bias=False)
 
     def forward(self, x):
-        return self.w2(self.act_fn(self.w1(x)) * self.w3(x))
+        return self.w2(self.act_fn(self.w1(x).float()) * self.w3(x))
 
     def init_weights(self, init_std: float):
         if getattr(self.act_fn, "reset_parameters", None) is not None:
